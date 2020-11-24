@@ -1,1 +1,7 @@
-USER PROFILE
+<div class="div container pt-5">
+  user profile my offers
+  <% @user.galaxies.each do |galaxy| %>
+    <%= galaxy.description %>
+    <%= link_to "Delete", galaxy_path(galaxy), method: :delete %>
+  <% end  %>
+</div>
