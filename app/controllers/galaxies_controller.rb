@@ -5,6 +5,7 @@ class GalaxiesController < ApplicationController
   end
 
   def show
+    @galaxy = Galaxy.find(params[:id])
   end
 
   def new
