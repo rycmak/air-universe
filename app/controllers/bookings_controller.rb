@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   def new
-    @galaxy2 = Galaxy.find(params[:galaxy_id])
+    @galaxy = Galaxy.find(params[:galaxy_id])
     @booking = Booking.new
   end
 
