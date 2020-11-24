@@ -1,0 +1,6 @@
+<%= simple_form_for [ @owner, @galaxy ] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :rate %>
+  <%= f.submit "Create Galaxy" %>
+<% end %>
