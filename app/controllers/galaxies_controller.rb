@@ -19,7 +19,7 @@ class GalaxiesController < ApplicationController
     @galaxy.owner = @owner
     @galaxy.save
 
-    redirect_to galaxies_show_path(@galaxy)
+    redirect_to galaxy_path(@galaxy)
   end
 
   def edit
