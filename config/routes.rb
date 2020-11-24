@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'galaxies/index'
-  get 'galaxies/show'
+  get 'galaxies/:id', to: 'galaxies#show'
   get 'galaxies/edit'
   devise_for :users
   root to: 'pages#home'
