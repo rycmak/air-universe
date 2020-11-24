@@ -1,7 +1,7 @@
 class CreateBookings < ActiveRecord::Migration[6.0]
   def change
     create_table :bookings do |t|
-      t.integer :status
+      t.integer :status, null: false, default: 0
       t.integer :total_price
       t.datetime :start_date
       t.datetime :end_date

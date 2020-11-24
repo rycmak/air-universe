@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :galaxies
-  has_many :bookings
+  has_many :galaxies, foreign_key: 'owner_id', class_name: 'Galaxy'
+  has_many :bookings, foreign_key: 'customer_id', class_name: 'Booking'
 
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
