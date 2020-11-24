@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Booking.destroy_all
+Galaxy.destroy_all
+User.destroy_all
+
+sy = User.create(email: "test@test.com", password: "password", first_name: "Sy", last_name: "Rashid")
+andromeda = Galaxy.create(name: "Andromeda", description: "Very close", rate: 9999, owner: sy)
+booking_sy = Booking.create(customer: sy, start_date: Time.now, end_date: (Time.now + 5000), galaxy: andromeda)
+
+# Create 10 more users/galaxies/bookings
+
+puts "Creating users..."
+10.times do 
+  user = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "password")  
+end
+puts "Done creating users"
+
+puts "Creating galaxies..."
+10.times do
+  galaxy = Galaxy.create(name: Faker::Space.galaxy, description: Faker::Lorem.paragraphs, rate: rand(500), owner: User.find(rand(1..10)))
+end
+puts "Done creating galaxies"
+
+puts "Creating bookings..."
+10.times do
+  booking = Booking.create(customer: User.find(rand(1..User.count)), start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.find(rand(1..Galaxy.count)))
+end
+puts "Done creating bookings"
