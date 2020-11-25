@@ -24,12 +24,12 @@ puts "Done creating users"
 
 puts "Creating galaxies..."
 10.times do
-  galaxy = Galaxy.create(name: Faker::Space.galaxy, description: Faker::Lorem.paragraphs, rate: rand(500), owner: User.find(rand(1..10)))
+  galaxy = Galaxy.create(name: Faker::Space.galaxy, description: Faker::Lorem.paragraphs, rate: rand(500), owner: User.all.sample)
 end
 puts "Done creating galaxies"
 
 puts "Creating bookings..."
 10.times do
-  booking = Booking.create(customer: User.find(rand(1..User.count)), start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.find(rand(1..Galaxy.count)))
+  booking = Booking.create(customer: User.all.sample, start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.all.sample)
 end
 puts "Done creating bookings"
