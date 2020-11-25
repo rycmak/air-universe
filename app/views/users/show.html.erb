@@ -29,7 +29,10 @@
           <div class="div card-body">
             <h5 class="font-weight-bold card-title"><%= booking.galaxy.name %></h5>
             <p class="small text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>
-            <span class="label label-primary"><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
+            <span class="label label-primary"><strong>Owner: </strong><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
+            <p></p>
+            <p><strong>Start date: </strong><%= booking.start_date %></p>
+            <p><strong>End date: </strong><%= booking.end_date %></p>
           </div>
           <div class="div card-footer">
             <span class="float-right">$<%= booking.galaxy.rate %>/night</span>
