@@ -7,7 +7,7 @@
         <div class="div card mb-4 shadow-sm rounded">
           <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
           <div class="div card-body">
-            <h5 class="font-weight-bold card-title"><%= galaxy.name %></h5>
+            <h5 class="font-weight-bold card-title"><%= link_to galaxy.name, galaxy_path(galaxy) %></h5>
             <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
             <span class="label label-primary"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
           </div>
@@ -27,7 +27,7 @@
         <div class="div card mb-4 shadow-sm rounded">
           <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
           <div class="div card-body">
-            <h5 class="font-weight-bold card-title"><%= booking.galaxy.name %></h5>
+            <h5 class="font-weight-bold card-title"><%= link_to booking.galaxy.name, galaxy_path(booking.galaxy)%></h5>
             <p class="small text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>
             <span class="label label-primary"><strong>Owner: </strong><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
             <p></p>
@@ -36,7 +36,7 @@
           </div>
           <div class="div card-footer">
             <span class="float-right">$<%= booking.galaxy.rate %>/night</span>
-            <%= link_to "Cancel booking", galaxy_path(booking.galaxy), method: :delete %>
+            <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
           </div>
         </div>
       </div>
