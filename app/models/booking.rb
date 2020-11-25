@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
 
   enum status: [:pending, :accepted, :declined]
 
-  # Write method validate :validate_created_at to check valid dates
+  # TODO: Write method validate :validate_created_at to check valid dates
 
 
 end
