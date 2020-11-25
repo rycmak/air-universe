@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  # get "users/:id/galaxies/new", to: "galaxies#new"
 
-  resources :galaxies, only: [ :index, :edit, :show ] do
+  resources :galaxies, only: [ :index, :show ] do
     resources :bookings, only: [ :new, :create ]
   end
   devise_for :users
