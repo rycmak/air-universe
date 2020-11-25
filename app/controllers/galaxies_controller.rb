@@ -23,6 +23,14 @@ class GalaxiesController < ApplicationController
   end
 
   def edit
+    @galaxy = Galaxy.find(params[:id])
+  end
+
+  def update
+    @galaxy = Galaxy.find(params[:id])
+    @galaxy.update(galaxy_params)
+
+    redirect_to galaxy_path(@galaxy)
   end
 
   def destroy
