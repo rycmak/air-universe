@@ -8,7 +8,7 @@ class GalaxiesController < ApplicationController
     @owner = User.find(params[:user_id])
     @galaxy = Galaxy.new
   end
-
+  
   def create
     @galaxy = Galaxy.new(galaxy_params)
     @owner = User.find(params[:user_id])
@@ -17,8 +17,9 @@ class GalaxiesController < ApplicationController
 
     redirect_to galaxies_show_path(@galaxy)
   end
-
+  
   def show
+    @galaxy = Galaxy.find(params[:id])
   end
 
   def edit
@@ -28,6 +29,5 @@ class GalaxiesController < ApplicationController
 
   def galaxy_params
     params.require(:galaxy).permit(:name, :description, :rate)
-
   end
 end
