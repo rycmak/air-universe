@@ -1,8 +1,8 @@
 <div class="div container pt-5">
   <div class="row">
     <% @galaxies.each do |galaxy| %>
-      <%#= link_to galaxy_path(galaxy) %>
-        <div class="div col-4">
+      <div class="div col-4">
+        <%= link_to galaxy_path(galaxy) do %>
           <div class="div card mb-4 shadow-sm rounded">
             <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
             <div class="div card-body">
@@ -14,8 +14,8 @@
               <span class="float-right">$<%= galaxy.rate %>/night</span>
             </div>
           </div>
-        </div>
-      <%# end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
