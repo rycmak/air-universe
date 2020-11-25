@@ -24,6 +24,14 @@ class GalaxiesController < ApplicationController
   def edit
   end
 
+  def destroy
+    @galaxy = Galaxy.find(params[:id])
+    @galaxy.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+    redirect_to galaxies_path
+  end
+
   private
 
   def galaxy_params
