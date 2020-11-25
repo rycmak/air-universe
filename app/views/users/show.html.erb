@@ -1,0 +1,22 @@
+<div class="div container pt-5">
+  <div class="row">
+    <% @user.galaxies.each do |galaxy| %>
+      <div class="div col-4">
+        <div class="div card mb-4 shadow-sm rounded">
+          <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+          <div class="div card-body">
+            <h5 class="font-weight-bold card-title"><%= galaxy.name %></h5>
+            <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
+            <span class="label label-primary"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
+          </div>
+          <div class="div card-footer">
+            <span class="float-right">$<%= galaxy.rate %>/night</span>
+            <%= link_to "Delete", galaxy_path(galaxy), method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  # get "users/:id/galaxies/new", to: "galaxies#new"
-  resources :galaxies, only: [ :index, :edit, :show ]
-  devise_for :users
-  resources :users, only: [] do
-    resources :galaxies, only: [ :new, :create ]
+  root to: 'pages#home'
+
+  resources :galaxies, only: [ :index, :show ] do
+    resources :bookings, only: [ :new, :create ]
   end
+  devise_for :users
+  resources :users, only: [ :show ] do
+    resources :galaxies, only: [ :index, :new, :create ]
+  end
+
+
   resources :bookings, only: [ :edit, :update ]
 
-  root to: 'pages#home'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
