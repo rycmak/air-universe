@@ -1,2 +1,30 @@
 <h1>Galaxies#show</h1>
 <p>Find me in app/views/galaxies/show.html.erb</p>
+
+<%= link_to "book a galaxy", new_galaxy_booking_path(@galaxy) %>
+
+<p>existing bookings:</p>
+<ul>
+  <% @galaxy.bookings.each do |booking| %>
+  <li> From: <%= booking.start_date %> - To: <%= booking.end_date %></li>
+  <% end %>
+</ul>
+
+<div class="container">
+
+  <div class="container">
+    <h1><%= @galaxy.name %></h1>
+  </div>
+  
+  <div class="container my-3">
+    <%= image_tag "andromeda.jpg", alt: "Le Wagon", width: 200, class: "rounded"%>
+  </div>
+
+  <div class="container">
+    <p><strong>Name: </strong><%= @galaxy.name %></p>
+    <p><strong>Description: </strong><%= @galaxy.description %></p>
+    <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
+    <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
+  </div>
+
+</div>

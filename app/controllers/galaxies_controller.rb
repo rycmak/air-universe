@@ -15,10 +15,11 @@ class GalaxiesController < ApplicationController
     @galaxy.owner = @owner
     @galaxy.save
 
-    redirect_to galaxies_show_path(@galaxy)
+    redirect_to galaxy_path(@galaxy)
   end
 
   def show
+    @galaxy = Galaxy.find(params[:id])
   end
 
   def edit
@@ -36,6 +37,5 @@ class GalaxiesController < ApplicationController
 
   def galaxy_params
     params.require(:galaxy).permit(:name, :description, :rate)
-
   end
 end
