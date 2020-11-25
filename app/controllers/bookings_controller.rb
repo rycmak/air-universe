@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def new
     @galaxy = Galaxy.find(params[:galaxy_id])
     @booking = Booking.new
+    # TODO: implement flatpicker date - refer LeWagon setup for 'flatpicker' gem: https://kitt.lewagon.com/knowledge/tutorials/flatpickr
   end
 
   def create
