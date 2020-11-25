@@ -15,7 +15,7 @@
   <div class="container">
     <h1><%= @galaxy.name %></h1>
   </div>
-  
+
   <div class="container my-3">
     <%= image_tag "andromeda.jpg", alt: "Le Wagon", width: 200, class: "rounded"%>
   </div>
@@ -26,5 +26,7 @@
     <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
     <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
   </div>
+
+  <%= link_to 'Edit Galaxy', edit_user_galaxy_path(@galaxy), class: "btn btn-primary" %>
 
 </div>

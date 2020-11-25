@@ -1,2 +1,6 @@
-<h1>Galaxies#edit</h1>
-<p>Find me in app/views/galaxies/edit.html.erb</p>
+<%= simple_form_for [ @owner, @galaxy ] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :rate %>
+  <%= f.submit "Create Galaxy" %>
+<% end %>
