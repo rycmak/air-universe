@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ] do
     resources :galaxies, only: [ :index, :new, :create,]
   end
-
+  resources :bookings, only: [ :edit, :update ]
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
