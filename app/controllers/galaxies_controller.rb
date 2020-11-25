@@ -8,7 +8,7 @@ class GalaxiesController < ApplicationController
     @owner = User.find(params[:user_id])
     @galaxy = Galaxy.new
   end
-  
+
   def create
     @galaxy = Galaxy.new(galaxy_params)
     @owner = User.find(params[:user_id])
@@ -17,12 +17,20 @@ class GalaxiesController < ApplicationController
 
     redirect_to galaxy_path(@galaxy)
   end
-  
+
   def show
     @galaxy = Galaxy.find(params[:id])
   end
 
   def edit
+  end
+
+  def destroy
+    @galaxy = Galaxy.find(params[:id])
+    @galaxy.destroy
+
+    # no need for app/views/restaurants/destroy.html.erb
+    redirect_to galaxies_path
   end
 
   private
