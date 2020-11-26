@@ -10,13 +10,15 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [ :edit, :update, :destroy ] do
-    resources :reviews, only: [ :index ]
+    resources :reviews, only: [ :index, :create ]
   end
 
   # ACCOUNTS
   namespace :account do
     resources :offers, only: [ :index ]
-    resources :bookings, only: [ :index ]
+    resources :bookings, only: [ :index ] do
+      resources :reviews, only: [ :new ]
+    end
   end  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
