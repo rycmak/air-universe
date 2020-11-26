@@ -1,10 +1,11 @@
 <div class="div container pt-5">
   <div class="row">
-    <% @galaxies.each do |galaxy| %>
+    <% @galaxies.each_with_index do |galaxy, index| %>
       <div class="div col-4">
         <%= link_to galaxy_path(galaxy) do %>
           <div class="div card mb-4 shadow-sm rounded">
-            <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+            <%#= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+            <%= cl_image_tag galaxy.photo.key, class: "card-img-top", alt: "..." %>
             <div class="div card-body">
               <h5 class="font-weight-bold card-title"><%= galaxy.name %></h5>
               <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
