@@ -9,11 +9,12 @@
             <div class="m-3" style="position: absolute; bottom: 0;">
               <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h5>
             </div>
+            <%#= cl_image_tag galaxy.photo.key, class: "card-img-top rounded-lg" %>
             <%= cl_image_tag galaxy.photo.key, class: "card-img-top rounded-lg" %>
           </div>
           <div class="card-body p-2 text-white">
             <div class="text-muted">
-              <%= cl_image_tag galaxy.owner.photo.key, radius: :max, gravity: :face, class: "avatar avatar-md" %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-sm" %>
               <span class="ml-1 small font-weight-normal"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
               <span class="float-right"><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i></span>
             </div>

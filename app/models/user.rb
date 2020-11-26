@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :galaxies, foreign_key: 'owner_id', class_name: 'Galaxy'
   has_many :bookings, foreign_key: 'customer_id', class_name: 'Booking'
-  has_one_attached :photo
 
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
