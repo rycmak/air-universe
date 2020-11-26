@@ -35,7 +35,7 @@ galaxy_names = ["Andromeda",
 "Hoag's Object: A Nearly Perfect Ring Galaxy",
 "Sombrero",
 "Cartwheel",
-"NGC 6872: A Stretched Spiral Galaxy",        
+"Stretched Spiral Galaxy NGC 6872",        
 "Whirlpool",
 "Ring Galaxy AM 0644-741",        
 "Starburst Galaxy (with Supergalactic Wind)",
@@ -84,7 +84,8 @@ puts "Creating users..."
 user_names.each do |user|
   first_name = user.split[0]
   last_name = user.split[1]
-  User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password")  
+  user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password")  
+  user.photo.attach(io: open("app/assets/images/avatars/#{first_name.downcase}_#{last_name.downcase}.jpg"), filename: "#{first_name.downcase}_#{last_name.downcase}.jpg", content_type: 'image/jpg')
 end
 puts "Done creating users"
 
@@ -96,7 +97,7 @@ end
 puts "Done creating galaxies"
 
 puts "Creating bookings..."
-11.times do
+11.times do 
   booking = Booking.create(customer: User.all.sample, start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.all.sample)
 end
 puts "Done creating bookings"
