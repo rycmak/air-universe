@@ -1,6 +1,6 @@
 <section>
   <div class="container pt-5">
-    <h4>Dashboard</h4>
+    <h4><%= current_user.first_name %>'s Dashboard</h4>
   </div>
 </section>
 
@@ -26,7 +26,7 @@
     <div class="row">
       <% @my_bookings.each do |booking| %>
         <div class="div col-lg-4 col-md-6 col-12">
-          <div class="div card rounded-top bg-transparent border shadow-sm rounded-lg">
+          <div class="div card rounded-top bg-transparent border-0 shadow-sm rounded-lg">
             <div class="card-header rounded-top p-0 bg-white" style="position: relative;">
               <div class="m-3 text-white" style="position: absolute; top: 0;">
                 <span class="badge badge-warning small rounded-pill px-3 pb-1 margin-0"><small><%= booking.status.upcase %></small></span>
@@ -46,14 +46,16 @@
              <div class="card-body p-2 text-white">
               <div class="text-muted">
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-sm" %>
-                <span class="ml-1 small font-weight-normal"><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
+                <a href="#">
+                  <span class="ml-1 small font-weight-normal"><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
+                </a>
                 <span class="float-right"><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i></span>
               </div>
             </div>
             <div class="div card-body pt-1">
-              <p class="small text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>
+              <p class="small font-weight-lighter text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>
             </div>
-            <div class="div card-footer bg-transparent border-top">
+            <div class="div card-footer border-0" style="background: #f5f5f5;">
               <span class="float-right font-weight-bold lead">$<%= booking.galaxy.rate %>/night</span>
               <%= link_to "Cancel Booking", booking_path(booking), class: "px-3 rounded-pill btn btn-danger btn-sm", method: :delete %>
             </div>
