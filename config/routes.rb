@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'galaxies#index'
 
   resources :galaxies, only: [ :index, :show, :destroy, :update ] do
     resources :bookings, only: [ :new, :create ]
@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :galaxies, only: [ :index, :new, :create, :edit]
   end
   resources :bookings, only: [ :edit, :update ]
-  
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
