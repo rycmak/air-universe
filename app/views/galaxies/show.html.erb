@@ -1,15 +1,3 @@
-<h1>Galaxies#show</h1>
-<p>Find me in app/views/galaxies/show.html.erb</p>
-
-<%= link_to "book a galaxy", new_galaxy_booking_path(@galaxy) %>
-
-<p>existing bookings:</p>
-<ul>
-  <% @galaxy.bookings.each do |booking| %>
-  <li> From: <%= booking.start_date %> - To: <%= booking.end_date %></li>
-  <% end %>
-</ul>
-
 <div class="container">
 
   <div class="container">
@@ -17,16 +5,28 @@
   </div>
 
   <div class="container my-3">
-    <%= image_tag "andromeda.jpg", alt: "Le Wagon", width: 200, class: "rounded"%>
+    <%= cl_image_tag @galaxy.photo.key, alt: "Galaxy image", width: 200, class: "rounded"%>
   </div>
 
   <div class="container">
-    <p><strong>Name: </strong><%= @galaxy.name %></p>
     <p><strong>Description: </strong><%= @galaxy.description %></p>
     <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
     <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
-  </div>
+ 
 
-  <%= link_to 'Edit Galaxy', edit_user_galaxy_path(@galaxy), class: "btn btn-primary" %>
+  <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary"%> 
+  <p></p>
+     
+  <% @galaxy.bookings.each do |booking| %>
+    <p><strong>Reviews by <%= booking.customer.first_name %>: </strong>
+      <ul>
+        
+      <% booking.reviews.each do |review| %> 
+      <li> <strong><%= review.rating %> / 5 </strong>- <%= review.description %> </li>
+      <% end %>
 
+      </ul>
+    </p>
+  <% end %>
+     </div>
 </div>

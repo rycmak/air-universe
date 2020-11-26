@@ -34,6 +34,10 @@ gem 'simple_form'
 
 gem 'devise'
 gem 'faker'
+# Access JSON from NASA's APOD API
+gem 'httparty'
+# For users to upload photos
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry-byebug'
