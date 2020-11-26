@@ -2,17 +2,16 @@
 
 <section class="container p-5">
   <div class="row">
-    <% @galaxies.each_with_index do |galaxy, index| %>
+    <% @galaxies.each do |galaxy| %>
       <div class="div col-4">
         <div class="div card rounded bg-transparent border-0">
           <div class="card-header rounded-lg p-0 bg-white" style="position: relative;">
             <div class="m-3" style="position: absolute; bottom: 0;">
               <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h5>
             </div>
-            <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top rounded-lg", alt: "...") %>
+            <%= cl_image_tag galaxy.photo.key, class: "card-img-top rounded-lg" %>
           </div>
           <div class="card-body p-2 text-white">
-            <%#= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "img-fluid", alt: "...") %>
             <div class="text-muted">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-sm" %>
               <span class="ml-1 small font-weight-normal"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
