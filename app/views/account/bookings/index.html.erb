@@ -7,11 +7,14 @@
 <section>
   <div class="container pt-3">
     <ul class="nav nav-pills border-bottom pb-3">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Bookings</a>
+      <li class="nav-item active">
+        <%= link_to 'Bookings', account_bookings_path, class: "nav-link active" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Offers', account_offers_path, class: "nav-link" %>
+        <%= link_to 'Reservations', account_offers_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">My Galaxies</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Reviews</a>
@@ -65,4 +68,3 @@
     </div>
   </div>
 </section>
-
