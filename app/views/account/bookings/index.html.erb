@@ -1,0 +1,9 @@
+<h1>My Bookings</h1>
+<ul>
+  <% @my_bookings.each do |booking| %> 
+
+  <li> <%= link_to booking.galaxy.name, galaxy_path(booking.galaxy) %>: FROM: <%= booking.start_date %> - TO: <%= booking.end_date %> - <%= link_to "Cancel", booking_path(booking), method: :delete %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'GO TO - MY OFFERS', account_offers_path %>

@@ -1,0 +1,16 @@
+<h1>My Offers</h1>
+<ul>
+  <% @my_galaxies.each do |galaxy| %>
+    <li> <%= link_to galaxy.name, galaxy_path(galaxy) %></li>
+     
+      <ul>    
+        <% galaxy.bookings.each do |booking| %>
+          <li class="list-group-item"><%= booking.start_date %> - <%= link_to "respond", edit_booking_path(booking) %></li>
+        <% end %>
+      </ul>
+  
+  <% end %>
+
+</ul>
+
+<%= link_to 'GO TO - MY BOOKINGS', account_bookings_path %>
