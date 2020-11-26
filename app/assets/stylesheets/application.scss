@@ -14,5 +14,19 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #000;
+}
+
+.rounded-lg {
+  border-radius: 10px !important;
+}
+
+img.galaxy-thumbnail {
+  border-radius: 10px;
+  height: 200px;
+  width: 100%;
+}
+
+.card-header {
+  height: 250px;
+  overflow: hidden;
 }

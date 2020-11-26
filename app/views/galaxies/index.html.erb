@@ -2,22 +2,24 @@
   <div class="row">
     <% @galaxies.each do |galaxy| %>
       <div class="div col-4">
-        <div class="div card mb-4 shadow-sm rounded bg-transparent">
-          <%#= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "roundedcard-img-top", alt: "...") %>
-          <div class="div card-body text-white">
-            <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "img-fluid rounded", alt: "...") %>
-
-            <div class="m-2">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-sm"  %>
-              <span class="small ml-2 font-weight-bold"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
-              <span class="float-right"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+        <div class="div card rounded bg-transparent border-0">
+          <div class="card-header rounded-lg p-0 bg-white" style="position: relative;">
+            <div class="m-3" style="position: absolute; bottom: 0;">
+              <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h5>
+              <!-- <p class="small text-white text-muted card-text"><%= galaxy.description.truncate(100) %></p> -->
             </div>
-
-            <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy) %></h5>
-            <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
+            <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top rounded-lg", alt: "...") %>
 
           </div>
-          <div class="div card-footer">
+          <div class="card-body p-2 text-white">
+            <%#= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "img-fluid", alt: "...") %>
+            <div class="text-muted">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-sm" %>
+              <span class="ml-1 small font-weight-normal"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
+              <span class="float-right"><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i></span>
+            </div>
+          </div>
+          <div class="div card-footer text-white border-0 bg-transparent">
             <span class="float-right">$<%= galaxy.rate %>/night</span>
           </div>
         </div>
