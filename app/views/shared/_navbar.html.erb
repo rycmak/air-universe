@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon rounded">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://cdn1.iconfinder.com/data/icons/space-travel-flat/340/space_astronomy_universe_galaxy_alien_ufo_spaceship_invasion_spacecraft-256.png" %>
+    <%= image_tag "https://cdn1.iconfinder.com/data/icons/space-travel-flat/340/space_astronomy_universe_galaxy_alien_ufo_spaceship_invasion_spacecraft-256.png", class: "float-left" %>
+    <span class="logo">AirGalaxy</span>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,11 +12,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+        <li class="nav-item active mx-2 mt-1">
+          <%= link_to "List Your Galaxy", new_user_galaxy_path(current_user), class: "px-3 btn btn-sm rounded-pill btn-dark" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+         <li class="nav-item active mx-2 mr-4 mt-1">
+          <%= image_tag("https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/bell-dot-notification-notify-ring-256.png", style:"height: 30px; opacity: .5;") %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
