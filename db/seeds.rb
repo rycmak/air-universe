@@ -35,7 +35,7 @@ end
 puts "Done creating bookings"
 
 puts "Creating reviews..."
-20.times do
+50.times do
   review = Review.create(booking: Booking.all.sample, rating: rand(1..5), description: Faker::Quote.yoda )
 end
 puts "Done creating reviews"
