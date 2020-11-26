@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [ :show ] do
     resources :galaxies, only: [ :index, :new, :create, :edit]
   end
-  resources :bookings, only: [ :edit, :update ]
+  resources :bookings, only: [ :edit, :update ] do
+    resources :reviews, only: [ :index ]
+  end
 
   # ACCOUNTS
   namespace :account do
