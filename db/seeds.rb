@@ -8,6 +8,7 @@
 
 require 'open-uri'
 
+Review.destroy_all
 Booking.destroy_all
 Galaxy.destroy_all
 User.destroy_all
