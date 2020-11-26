@@ -102,7 +102,11 @@ end
 puts "Done creating bookings"
 
 puts "Creating reviews..."
-50.times do
-  review = Review.create(booking: Booking.all.sample, rating: rand(1..5), description: Faker::Quote.yoda )
+User.all.each_with_index do |user, i|
+  puts "user number #{i + 1} is writing reviews..."
+  user.bookings.each_with_index do |booking, x|
+    puts "sweating on review number #{x + 1}..."
+    review = Review.create(booking: booking, rating: rand(1..5), description: Faker::Quote.yoda )
+  end
 end
 puts "Done creating reviews"
