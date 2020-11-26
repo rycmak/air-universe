@@ -13,7 +13,7 @@
 @import "pages/index";
 
 // Flatpickr
-@import "flatpickr/dist/flatpickr"; 
+// @import "flatpickr/dist/flatpickr"; 
 //Flatpicker theme - options - change - end of the file: 
     // ├── airbnb.css
     // ├── confetti.css
@@ -23,7 +23,7 @@
     // ├── material_green.css
     // ├── material_orange.css
     // └── material_red.css
-@import "flatpickr/dist/themes/confetti";
+@import "flatpickr/dist/themes/confetti"; //orange - soft'ish
 
 body {
   font-family: 'Roboto', sans-serif;

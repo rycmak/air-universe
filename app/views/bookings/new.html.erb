@@ -8,12 +8,12 @@
 
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Flatpickr Demo ---- New Booking for <%= @galaxy.name %> </h2>
+    <h2> New Booking for <%= @galaxy.name %> </h2>
 
     <%= simple_form_for [ @galaxy, @booking ] do |f| %>
       <%= f.input :start_date, as: :string, required: false, input_html: { id: "range_start" } %>
       <%= f.input :end_date, as: :string, required: false, input_html: { id: "range_end" }  %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <%= f.button :submit, "Book", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
