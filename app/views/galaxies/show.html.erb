@@ -9,25 +9,24 @@
   </div>
 
   <div class="container">
-    <p><strong>Name: </strong><%= @galaxy.name %></p>
     <p><strong>Description: </strong><%= @galaxy.description %></p>
     <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
     <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
-  </div>
+ 
 
   <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary"%> 
-
-  <div>    
+  <p></p>
+     
   <% @galaxy.bookings.each do |booking| %>
-    <p><strong>Reviews: </strong>
+    <p><strong>Reviews by <%= booking.customer.first_name %>: </strong>
       <ul>
         
       <% booking.reviews.each do |review| %> 
-      <li> <strong><%= review.rating %> </strong>- <%= review.description %> </li>
+      <li> <strong><%= review.rating %> / 5 </strong>- <%= review.description %> </li>
       <% end %>
 
       </ul>
     </p>
   <% end %>
-  </div>
+     </div>
 </div>
