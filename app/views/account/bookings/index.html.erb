@@ -16,8 +16,13 @@
           </div>
           <div class="div card-footer">
             <span class="float-right">$<%= booking.galaxy.rate %>/night</span>
-            <%= link_to "Cancel", booking_path(booking), method: :delete %>
+            <%= link_to "Cancel", booking_path(booking), method: :delete, class: "btn btn-warning" %>
+          <div>
+            <p></p>
+                <%= link_to 'leave a review', new_account_booking_review_path(booking), class: "btn btn-primary" %>
+              </div>
           </div>
+
         </div>
       </div>
     <% end %>
@@ -25,7 +30,9 @@
 
   <div>
     <%= link_to 'GO TO - MY OFFERS', account_offers_path %>
-  </div>
+  </div> 
+
+  
 
 </div>
 

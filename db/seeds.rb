@@ -99,3 +99,9 @@ puts "Creating bookings..."
   booking = Booking.create(customer: User.all.sample, start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.all.sample)
 end
 puts "Done creating bookings"
+
+puts "Creating reviews..."
+50.times do
+  review = Review.create(booking: Booking.all.sample, rating: rand(1..5), description: Faker::Quote.yoda )
+end
+puts "Done creating reviews"
