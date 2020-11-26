@@ -1,0 +1,30 @@
+<h1>My Offers</h1>
+
+<div class="row">
+  <% @my_galaxies.each do |galaxy| %>
+  <div class="div col-4"> 
+    <% galaxy.bookings.each do |booking| %>
+    <div class="div card mb-4 shadow-sm rounded">
+      <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+      <div class="div card-body">
+        <h5 class="font-weight-bold card-title"><%= link_to galaxy.name, galaxy_path(galaxy) %></h5>
+        <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
+
+        <span class="label label-primary"><strong> Customer: </strong><%= booking.customer.first_name %> <%= booking.customer.last_name%></span>
+        <p></p>
+        <p><span class="label label-primary"><strong>Status: </strong><%= booking.status.upcase %> </span></p>
+        <p><strong>Start date: </strong><%= booking.start_date %></p>
+        <p><strong>End date: </strong><%= booking.end_date %></p>
+
+        <div>
+          <!--       <span class="float-right">$<%#= galaxy.rate %>/night</span> -->
+          <%= link_to "respond / change status", edit_booking_path(booking) %>
+        </div>
+      </div>
+      
+
+      <% end %>
+    </div>
+  </div>
+<% end %>
+</div>

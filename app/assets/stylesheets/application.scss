@@ -15,3 +15,39 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+p {
+  font-weight: 300 !important;
+}
+
+.rounded-lg {
+  border-radius: 10px !important;
+}
+
+img.galaxy-thumbnail {
+  border-radius: 10px;
+  height: 200px;
+  width: 100%;
+}
+
+.card-header {
+  height: 200px;
+  overflow: hidden;
+}
+
+.logo {
+  margin-left: 10px;
+  margin-top: 12px;
+  letter-spacing: 0px;
+  color: #820082;
+  font-size: 1.5rem;
+  line-height: 1rem;
+  float: left;
+
+  font-family: 'Bangers';
+  font-family: 'Goldman', cursive;
+  font-family: 'Modak', cursive;
+  font-family: 'Damion', cursive;
+  font-family: 'Bungee', cursive;
+  // font-family: 'Michroma', sans-serif;
+}
