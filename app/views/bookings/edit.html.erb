@@ -1,4 +1,4 @@
-<h1>Booking Confirmation</h1>
+<h1>Booking Confirmation for <%= @booking.galaxy.name %></h1>
 
 <%= simple_form_for (@booking) do |f| %>
   <%= f.input :status, collection: Booking.statuses %>
