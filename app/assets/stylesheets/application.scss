@@ -12,6 +12,19 @@
 @import "components/index";
 @import "pages/index";
 
+// Flatpickr
+@import "flatpickr/dist/flatpickr"; 
+//Flatpicker theme - options - change - end of the file: 
+    // ├── airbnb.css
+    // ├── confetti.css
+    // ├── dark.css
+    // ├── light.css
+    // ├── material_blue.css
+    // ├── material_green.css
+    // ├── material_orange.css
+    // └── material_red.css
+@import "flatpickr/dist/themes/confetti";
+
 body {
   font-family: 'Roboto', sans-serif;
 }
