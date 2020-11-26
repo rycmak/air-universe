@@ -12,11 +12,16 @@ class GalaxiesController < ApplicationController
 
   def create
     @galaxy = Galaxy.new(galaxy_params)
+    # if no image uploaded, attach a placeholder
+    @galaxy.photo.attach(io: open("app/assets/images/galaxies/cartoon_galaxy.jpg"), filename: "cartoon_galaxy.jpg", content_type: 'image/jpg') if !@galaxy.photo.attached?
     @owner = User.find(params[:user_id])
     @galaxy.owner = @owner
-    @galaxy.save
 
-    redirect_to galaxy_path(@galaxy)
+    if @galaxy.save
+      redirect_to galaxy_path(@galaxy)
+    else
+      render :new
+    end
   end
 
   def show
