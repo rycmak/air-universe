@@ -17,7 +17,7 @@
   </div>
 
   <div class="container my-3">
-    <%= image_tag "andromeda.jpg", alt: "Le Wagon", width: 200, class: "rounded"%>
+    <%= cl_image_tag @galaxy.photo.key, alt: "Galaxy image", width: 200, class: "rounded"%>
   </div>
 
   <div class="container">
