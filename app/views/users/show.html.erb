@@ -5,7 +5,7 @@
     <% @user.galaxies.each do |galaxy| %>
       <div class="div col-4">
         <div class="div card mb-4 shadow-sm rounded">
-          <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+          <%= cl_image_tag galaxy.photo.key, class: "card-img-top", alt: "..." %>
           <div class="div card-body">
             <h5 class="font-weight-bold card-title"><%= link_to galaxy.name, galaxy_path(galaxy) %></h5>
             <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
@@ -25,7 +25,7 @@
     <% @user.bookings.each do |booking| %>
       <div class="div col-4">
         <div class="div card mb-4 shadow-sm rounded">
-          <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top", alt: "...") %>
+          <%= cl_image_tag booking.galaxy.photo.key, class: "card-img-top", alt: "..." %>
           <div class="div card-body">
             <h5 class="font-weight-bold card-title"><%= link_to booking.galaxy.name, galaxy_path(booking.galaxy)%></h5>
             <p class="small text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>

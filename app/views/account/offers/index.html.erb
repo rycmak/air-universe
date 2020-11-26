@@ -35,7 +35,7 @@
               <div class="card-header rounded-top p-0 bg-white" style="position: relative;">
                 <div class="m-3 text-white" style="position: absolute; top: 0;">
                   <div class="text-muted">
-                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar avatar-lg" %>
+                    <%= cl_image_tag booking.customer.photo.key, class: "avatar avatar-md" %>
                     <a href="#">
                       <span class="ml-1 font-weight-normal text-white"><%= booking.customer.first_name %> <%= booking.customer.last_name %></span>
                     </a>
@@ -48,7 +48,7 @@
                   <p><%#= booking.end_date %></p>
                 -->
                 </div>
-                <%= image_tag("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1427&q=80", class: "card-img-top rounded-lg", alt: "...") %>
+                <%= cl_image_tag booking.galaxy.photo.key, class: "card-img-top rounded-lg", alt: "..." %>
               </div>
               <div class="div card-footer px-3 border-0 bg-light-gray">
                 <span class="float-right font-weight-bold mt-1">$<%= booking.total_price %>[total_price]</span>
