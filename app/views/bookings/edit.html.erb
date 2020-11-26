@@ -5,7 +5,7 @@
 
     <%= simple_form_for (@booking) do |f| %>
       <%= f.input :status, collection: Booking.statuses %>
-      <%= f.submit "Respond" %>
+      <%= f.submit "Respond", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
