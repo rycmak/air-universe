@@ -51,3 +51,24 @@ img.galaxy-thumbnail {
   font-family: 'Bungee', cursive;
   // font-family: 'Michroma', sans-serif;
 }
+
+a.nav-link,
+ {
+  color: #888;
+  font-size: 14px;
+}
+
+a.nav-link.active {
+ color: #fff;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #820082;
+    color: #fff;
+    border-radius: 20px;
+    padding: 7px 30px;
+}
+
+ .bg-light-gray {
+    background: #f5f5f5;
+  }
