@@ -27,11 +27,22 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(status: booking_confirmation_params[:status].to_i)
-      redirect_to galaxies_path
-      # TODO: redirect to dashboard
+      # redirect to dashboard
+      redirect_to user_path(current_user)
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    # TODO: WIP - trying to implement protection - so only customer can delete.
+    # if @booking[current_user] == @booking[:customer_id])
+      @booking.destroy
+      redirect_to user_path(@booking[:customer_id])
+    # else
+      # put 'error'
+    # end
   end
 
   private
