@@ -1,51 +1,18 @@
-<div class="div container pt-5">
-
-  <h2>Galaxies I own</h2>
-  <div class="row">
-    <% @user.galaxies.each do |galaxy| %>
-      <div class="div col-4">
-        <div class="div card mb-4 shadow-sm rounded">
-          <%= cl_image_tag galaxy.photo.key, class: "card-img-top", alt: "..." %>
-          <div class="div card-body">
-            <h5 class="font-weight-bold card-title"><%= link_to galaxy.name, galaxy_path(galaxy) %></h5>
-            <p class="small text-muted card-text"><%= galaxy.description.truncate(100) %></p>
-            <span class="label label-primary"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
-          </div>
-          <div class="div card-footer">
-            <span class="float-right">$<%= galaxy.rate %>/night</span>
-            <%= link_to "Delete", galaxy_path(galaxy), method: :delete %>
-          </div>
-        </div>
+<section class="pt-5 mt-5">
+  <div class="container pt-5">
+    <div class="row justify-content-center align-item-center">
+      <div class="col-6 text-center">
+        <%= cl_image_tag current_user.photo.key, class: "img-fluid rounded-circle" %>
+        <h2 class="pt-3 font-weight-bold"><%= current_user.first_name %> <%= current_user.last_name %></h2>
+        <hr/>
+        <p class="text-muted">
+          Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Harum sed minus r
+          eprehenderit quas tempore error ducimus voluptatem dicta placeat possimus laboriosam
+          est blanditiis ad, modi eos quod officia debitis! Sit?
+        </p>
+        <%= link_to 'Reservations', account_offers_path, class: "btn btn-primary rounded-pill mr-1" %>
+        <%= link_to 'Bookings', account_bookings_path, class: "btn btn-primary rounded-pill" %>
       </div>
-    <% end %>
+    </div>
   </div>
-
-  <h2>Galaxies I booked</h2>
-  <div class="row">
-    <% @user.bookings.each do |booking| %>
-      <div class="div col-4">
-        <div class="div card mb-4 shadow-sm rounded">
-          <%= cl_image_tag booking.galaxy.photo.key, class: "card-img-top", alt: "..." %>
-          <div class="div card-body">
-            <h5 class="font-weight-bold card-title"><%= link_to booking.galaxy.name, galaxy_path(booking.galaxy)%></h5>
-            <p class="small text-muted card-text"><%= booking.galaxy.description.truncate(100) %></p>
-            <span class="label label-primary"><strong>Owner: </strong><%= booking.galaxy.owner.first_name %> <%= booking.galaxy.owner.last_name%></span>
-            <p></p>
-            <p><strong>Start date: </strong><%= booking.start_date %></p>
-            <p><strong>End date: </strong><%= booking.end_date %></p>
-          </div>
-          <div class="div card-footer">
-            <span class="float-right">$<%= booking.galaxy.rate %>/night</span>
-            <%= link_to "Cancel booking", booking_path(booking), method: :delete %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<%= link_to 'GO TO - MY OFFERS', account_offers_path %>
-<br>
-<%= link_to 'GO TO - MY BOOKINGS', account_bookings_path %>
-
-
+</section>
