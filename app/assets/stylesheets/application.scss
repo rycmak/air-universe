@@ -13,8 +13,8 @@
 @import "pages/index";
 
 // Flatpickr
-// @import "flatpickr/dist/flatpickr"; 
-//Flatpicker theme - options - change - end of the file: 
+// @import "flatpickr/dist/flatpickr";
+//Flatpicker theme - options - change - end of the file:
     // ├── airbnb.css
     // ├── confetti.css
     // ├── dark.css
@@ -43,7 +43,7 @@ img.galaxy-thumbnail {
   width: 100%;
 }
 
-.card-header {
+.galaxy > .card-header {
   height: 200px;
   overflow: hidden;
 }
