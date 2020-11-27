@@ -15,6 +15,24 @@ User.destroy_all
 
 user_names = ["Lando Calrissian", "Leia Organa", "Han Solo", "Lyra Erso", "Boba Fett", "C3 PO", "R2 D2", "Kylo Ren", "Rune Haako", "Rose Tico", "Maz Kanata", "Saw Gerrera", "Asajj Ventress", "Obi-wan Kenobi", "Sheev Palpatine", "Nute Gunray"]
 
+user_bios = ["",  # Lando Calrissian
+"Princess Leia Organa was one of the greatest leaders of the Rebel Alliance, fearless on the battlefield and dedicated to ending the Empire’s tyranny. Daughter of Padmé Amidala and Anakin Skywalker, sister of Luke Skywalker, and with a soft spot for scoundrels, Leia ranked among the galaxy’s great heroes. But life under the New Republic proved difficult for her. Sidelined by a new generation of political leaders, she struck out on her own to oppose the First Order as founder of the Resistance. These setbacks in her political career were accompanied by more personal losses, which she endured with her seemingly inexhaustible will.",  # Leia Organa
+"Han Solo rose from an impoverished childhood on the mean streets of Corellia to become one of the heroes of the Rebel Alliance. As captain of the Millennium Falcon, Han and his co-pilot Chewbacca came to believe in the cause of galactic freedom, joining Luke Skywalker and Princess Leia Organa in the fight against the Empire. After the Battle of Endor, Han faced difficult times in a chaotic galaxy, leading to a shattering confrontation with his estranged son Ben.",  # Han Solo
+"",  # Lyra Erso
+"",  # Boba Fett
+"",  # C3PO
+"A reliable and versatile astromech droid, R2-D2 has served Padmé Amidala, Anakin Skywalker, and Luke Skywalker in turn, showing great bravery in rescuing his masters and their friends from many perils. A skilled starship mechanic and fighter pilot's assistant, he has an unlikely but enduring friendship with the fussy protocol droid C-3PO.", # R2D2
+"",  # Kylo Ren
+"",  # Rune Haako
+"", # Rose Tico
+"", # Maz Kanata
+"", # Saw Gerrera
+"", # Asajj Ventress
+"", # Obi-wan Kenobi
+"", # Sheev Palpatine
+"" # Nute Gunray
+]
+
 # Use NASA's APOD API to retrieve images and info about galaxies
 # response = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=#{date}"
 # Selected dates (with nice galaxy images) to insert into API calls:
@@ -73,10 +91,10 @@ photo_paths = ["1_M31_Abolfath_960.jpg",
 "16_cenA_cfht.jpg"]
 
 puts "Creating users..."
-user_names.each do |user|
+user_names.each_with_index do |user, index|
   first_name = user.split[0]
   last_name = user.split[1]
-  user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password")  
+  user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password", bio: user_bios[index])  
   user.photo.attach(io: open("app/assets/images/avatars/#{first_name.downcase}_#{last_name.downcase}.jpg"), filename: "#{first_name.downcase}_#{last_name.downcase}.jpg", content_type: 'image/jpg')
 end
 puts "Done creating users"
@@ -96,8 +114,8 @@ bookings_galaxies = ["Andromeda",
 "Triangulum",
 "Porpoise",
 "Hoag's Object: A Nearly Perfect Ring Galaxy",
-"Sombrero",
 "Cartwheel",
+"Sombrero",
 "Stretched Spiral Galaxy NGC 6872",        
 "Whirlpool",
 "Ring Galaxy AM 0644-741",
