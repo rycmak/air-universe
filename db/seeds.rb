@@ -89,20 +89,25 @@ end
 puts "Done creating galaxies"
 
 puts "Creating bookings..."
+# Choose customers
 bookings_customers = [User.find_by(first_name: "Leia"), User.find_by(first_name: "R2"), User.find_by(first_name: "Han"), User.find_by(first_name: "Boba"), User.find_by(first_name: "Obi-wan")]
+# Choose galaxies
 bookings_galaxies = ["Andromeda",
 "Triangulum",
 "Porpoise",
 "Hoag's Object: A Nearly Perfect Ring Galaxy",
 "Sombrero",
 "Cartwheel",
-"NGC 6872: A Stretched Spiral Galaxy",        
+"Stretched Spiral Galaxy NGC 6872",        
 "Whirlpool",
 "Ring Galaxy AM 0644-741",
 "Galaxy Wars: M81 and M82"]
+
 booking_index = 0
 10.times do
-  Booking.create(customer: bookings_customers[booking_index % 5], start_date: Time.now, end_date: (Time.now + rand(500_000) + 259_200), galaxy: Galaxy.find_by(name: bookings_galaxies[booking_index]))
+  booking = Booking.create(customer: bookings_customers[booking_index % 5], start_date: Time.now, end_date: (Time.now + rand(500_000) + 259_200), galaxy: Galaxy.find_by(name: bookings_galaxies[booking_index]))
+  booking.total_price = booking.galaxy.rate * (booking.end_date - booking.start_date) / (60 * 60 * 24)
+  booking.save!
   booking_index += 1
 end
 puts "Done creating bookings"
