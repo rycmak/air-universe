@@ -42,7 +42,7 @@
 
               </div>
               <div class="m-3" style="position: absolute; bottom: 0;">
-                <h4 class="font-weight-bold card-title mt-3"> My Rating: <%= review.rating %></h4>
+                  <h6 class="mt-3 text-white font-weight-bold"><i class="far fa-calendar-alt mr-2"></i> <%= review.booking.start_date.strftime("%b %d") %> - <%= review.booking.end_date.strftime("%b %d, %Y") %> </h6>
               </div>
               <%= cl_image_tag review.booking.galaxy.photo.key, class: "card-img-top rounded-lg", alt: "..." %>
             </div>
@@ -57,10 +57,6 @@
             </div>
             <div class="div card-body pt-1">
               <p class="small font-weight-lighter text-muted card-text"> Rated: <strong><%= review.rating.truncate(100) %> / 5</strong>  - <%= review.description.truncate(100) %></p>
-            </div>
-            <div class="div card-footer border-0" style="background: #f5f5f5;">
-              <span class="float-right font-weight-bold lead">$<%= review.rating %>/night</span>
-              <%= link_to "boom boom review", galaxy_path(review), class: "px-3 rounded-pill btn btn-danger btn-sm" %>
             </div>
           </div>
         </div>

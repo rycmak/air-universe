@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 // adding FLATPICKR file to our entry point so it is picked up by Webpack.
-import "../plugins/flatpickr"
+import {initFlatpickr} from "../plugins/flatpickr";
 
 
 
@@ -35,4 +35,7 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initFlatpickr();
 });
+
+

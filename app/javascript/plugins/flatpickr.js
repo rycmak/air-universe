@@ -1,9 +1,12 @@
 import flatpickr from "flatpickr";
+const initFlatpickr = () => {
+  flatpickr(".flatpickr", {});
+}
 
-flatpickr(".datepicker", {});
+export {initFlatpickr};
 
 //calenda range functionality - experimental but stable
-import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
+// import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 flatpickr("#range_start", {
   altInput: true,
