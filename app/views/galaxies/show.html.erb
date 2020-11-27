@@ -45,7 +45,7 @@
              <!--  <div class="col-3 text-left">
                 <div class="m-3 border-left text-white border-warning pl-3" style="position: absolute; top: 275px";>
                   <h6 class="font-weight-bold small text-warning">Featured Vacation</h6>
-                  <h6 class="font-weight-normal">Adromeda Galatica</h6>
+                  <h6 class="font-weight-normal">Andromeda Galatica</h6>
                   <h4 class="font-weight-normal">$<%= @galaxy.rate %> /
                     <span class="small">night</span>
                   </h4>
@@ -65,11 +65,11 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <div class="row" style="margin-top: -265px; z-index: 999999; position: relative;">
+        <div class="row" style="margin-top: -200px; z-index: 999999; position: relative;">
           <div class="col-4">
             <%= cl_image_tag @galaxy.owner.photo.key, radius: :max, gravity: :face, class: "img-fluid bg-white rounded", style: "padding: 20px;" %>
           </div>
-          <div class="col-8 text-white" style="margin-top: 80px;">
+          <div class="col-8 text-white" style="margin-top: 20px;">
             <h1 class="display-4 font-weight-normal text-white"><%= @galaxy.name %></h1>
             <h6 class="display-5 font-weight-normal">
               <span class="review"><i class="fas fa-hand-spock mr-1"></i> 4.8</span>
