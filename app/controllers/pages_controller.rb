@@ -3,4 +3,7 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def quck_exp
+  end
 end

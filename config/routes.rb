@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     end
   end  
 
+  # QUICK EXPERIENCE ROUTE
+  get 'quick_exp', to: 'pages#quick_exp'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
