@@ -1,32 +1,98 @@
-<div class="container">
+<section class="">
+  <div class="container-row">
+    <div class="row">
+      <div class="col-12">
+        <div class="image_wrapper" style="height: 700px; overflow: hidden; background-image: url(<%= cl_image_path @galaxy.photo.key, class: "" %>); background-size: cover;">
+          <div class="overlay"></div>
+            <div class="row align-items-center relative">
 
-  <div class="container">
-    <h1><%= @galaxy.name %></h1>
+            </div>
+            <div class="row justify-content-end">
+             <!--  <div class="col-3 text-left">
+                <div class="m-3 border-left text-white border-warning pl-3" style="position: absolute; top: 275px";>
+                  <h6 class="font-weight-bold small text-warning">Featured Vacation</h6>
+                  <h6 class="font-weight-normal">Adromeda Galatica</h6>
+                  <h4 class="font-weight-normal">$<%= @galaxy.rate %> /
+                    <span class="small">night</span>
+                  </h4>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="container my-3">
-    <%= cl_image_tag @galaxy.photo.key, alt: "Galaxy image", width: 200, class: "rounded"%>
-  </div>
 
+<section class="pt-5">
   <div class="container">
-    <p><strong>Description: </strong><%= @galaxy.description %></p>
-    <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
-    <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
- 
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="row" style="margin-top: -265px; z-index: 999999; position: relative;">
+          <div class="col-4">
+            <%= cl_image_tag @galaxy.owner.photo.key, radius: :max, gravity: :face, class: "img-fluid bg-white rounded", style: "padding: 20px;" %>
+          </div>
+          <div class="col-8 text-white" style="margin-top: 80px;">
+            <h1 class="display-4 font-weight-normal text-white"><%= @galaxy.name %></h1>
+            <h6 class="display-5 font-weight-normal">
+              <span class="review"><i class="fas fa-hand-spock mr-1"></i> 4.8</span>
+              <span class="mx-2 text-warning">&#8226;</span>
+              <i class="fas fa-globe-europe mr-1"></i> Entire Celestial Body
+              <span class="mx-2 text-warning">&#8226;</span>
+              <i class="fas fa-bed"></i> 19,081
+            </h6>
+          </div>
+        </div>
 
-  <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary"%> 
-  <p></p>
-     
-  <% @galaxy.bookings.each do |booking| %>
-    <p><strong>Reviews by <%= booking.customer.first_name %>: </strong>
-      <ul>
-        
-      <% booking.reviews.each do |review| %> 
-      <li> <strong><%= review.rating %> / 5 </strong>- <%= review.description %> </li>
-      <% end %>
+        <h5 class="font-weight-bold mt-5">
+          <%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %>
+          <span class="mx-2 text-warning">&#8226;</span>
+          <i class="fas fa-medal mr-1"></i> Supreme Member
+          <span class="mx-2 text-warning">&#8226;</span>
+          <i class="fas fa-jedi mr-1"></i> Jedi-trained
+        </h5>
 
-      </ul>
-    </p>
-  <% end %>
-     </div>
-</div>
+
+        <hr/>
+
+        <h5>Overview</h5>
+        <p class="text-muted my-4"><%= @galaxy.description %></p>
+        <hr/>
+
+        <h5 class="mt-4 mb-5">Reviews <span class="small text-muted">(add count)</span></h5>
+
+        <% @galaxy.bookings.each do |booking| %>
+          <div class="media row">
+          <div class=" col-2">
+            <%= cl_image_tag booking.customer.photo.key, radius: :max, gravity: :face, class: "col-12" %>
+            <p class="small text-center font-weight-bold mt-1"><%= booking.customer.first_name %> <%= booking.customer.last_name %></p>
+          </div>
+          <div class="media-body col-10 border-bottom">
+            <% booking.reviews.each do |review| %>
+              <div class="mb-2 review row">
+                <div class="col-auto">
+                  <h4 class="d-inline-block"><span class="badge badge-warning"><%= review.rating %> / 5 </span></h4>
+                </div>
+                <div class="col">
+                  <h6 class="mt-2"><%= review.description %>"</h6>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-3">
+        <div class="card shadow rounded">
+          <div class="div card-body">
+            <h3 class="text-center">$<%= @galaxy.rate %> / <small>night</small></h3>
+            <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
