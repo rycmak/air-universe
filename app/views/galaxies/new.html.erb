@@ -8,26 +8,10 @@
           </div>
           <div class="card-body p-5">
             <%= simple_form_for [ @owner, @galaxy ] do |f| %>
-              <div class="row">
-                <div class="col-12">
-                  <%= f.input :name, class: "form-control" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <%= f.input :description, class: "form-control" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-4">
-                  <%= f.input :rate, class: "form-control" %>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-4">
-                  <%= f.input :photo, as: :file, class: "btn btn-dark" %>
-                </div>
-              </div>
+              <%= f.input :name, class: "form-control" %>
+              <%= f.input :description, class: "form-control" %>
+              <%= f.input :rate, class: "form-control" %>
+              <%= f.input :photo, as: :file, class: "btn btn-dark" %>
               <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
