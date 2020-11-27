@@ -29,7 +29,6 @@
     <div class="row">
       <% @my_galaxies.each do |galaxy| %>
         <% galaxy.bookings.each do |booking| %>
-
           <div class="div col-lg-4 col-md-6 col-12">
             <div class="div card rounded-top bg-transparent border-0 shadow-sm rounded-lg">
               <div class="card-header rounded-top p-0 bg-white" style="position: relative;">
@@ -55,8 +54,8 @@
                 <%= link_to "Manage Booking", edit_booking_path(booking), class: "px-3 rounded-pill btn btn-dark btn-sm" %>
               </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
