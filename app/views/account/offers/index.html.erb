@@ -42,7 +42,7 @@
                   </div>
                   <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h5>
                   <span class="badge badge-warning small rounded-pill px-3 pb-1 margin-0"><small><%= booking.status.upcase %></small></span>
-                  <h6 class="mt-3 font-weight-bold"><i class="far fa-calendar-alt mr-2"></i> Jan 22 - Feb 22, 2020</h6>
+                  <h6 class="mt-3 font-weight-bold"><i class="far fa-calendar-alt mr-2"></i> <%= booking.start_date.strftime("%b %d") %> - <%= booking.end_date.strftime("%b %d, %Y") %> </h6>
                   <!--
                   <p><%#= booking.start_date %></p>
                   <p><%#= booking.end_date %></p>
