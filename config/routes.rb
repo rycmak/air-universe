@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :offers, only: [ :index ]
     resources :galaxies, only: [ :index ]
+    resources :reviews, only: [ :index ]
     resources :bookings, only: [ :index ] do
       resources :reviews, only: [ :new ]
     end

@@ -1,4 +1,10 @@
-<section>
+<!-- <h1>my reviews</h1>
+
+ <%# @my_reviews.each do |review|%>
+     <li> <%#= review %></li>
+ <%# end %> -->
+
+ <section>
   <div class="container pt-5">
     <h4><%= current_user.first_name %>'s Dashboard</h4>
   </div>
@@ -14,10 +20,10 @@
         <%= link_to 'Reservations', account_offers_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'My Galaxies', account_galaxies_path, class: "nav-link active" %>
+        <%= link_to 'My Galaxies', account_galaxies_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'My Reviews', account_reviews_path, class: "nav-link" %>
+        <%= link_to 'My Reviews', account_reviews_path, class: "nav-link active" %>
       </li>
     </ul>
   </div>
@@ -26,7 +32,7 @@
 <section>
   <div class="container pt-5">
     <div class="row">
-      <% @my_galaxies.each do |galaxy| %>
+      <% @my_reviews.each do |review| %>
         <div class="div col-lg-4 col-md-6 col-12">
           <div class="div card rounded-top bg-transparent border-0 shadow-sm rounded-lg">
             <div class="card-header rounded-top p-0 bg-white" style="position: relative;">
@@ -36,25 +42,25 @@
 
               </div>
               <div class="m-3" style="position: absolute; bottom: 0;">
-                <h4 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h4>
+                <h4 class="font-weight-bold card-title mt-3"> My Rating: <%= review.rating %></h4>
               </div>
-              <%= cl_image_tag galaxy.photo.key, class: "card-img-top rounded-lg", alt: "..." %>
+              <%= cl_image_tag review.booking.galaxy.photo.key, class: "card-img-top rounded-lg", alt: "..." %>
             </div>
              <div class="card-body p-2 text-white">
               <div class="text-muted">
-                <%= cl_image_tag galaxy.owner.photo.key, class: "avatar avatar-sm" %>
+                <%#= cl_image_tag review.owner.photo.key, class: "avatar avatar-sm" %>
                 <a href="#">
-                  <span class="ml-1 small font-weight-normal"><%= galaxy.owner.first_name %> <%= galaxy.owner.last_name%></span>
+                  <span class="ml-1 small font-weight-normal"><%#= review.owner.first_name %> <%= review.booking.galaxy.name %></span>
                 </a>
                 <span class="float-right"><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i></span>
               </div>
             </div>
             <div class="div card-body pt-1">
-              <p class="small font-weight-lighter text-muted card-text"><%= galaxy.description.truncate(100) %></p>
+              <p class="small font-weight-lighter text-muted card-text"> Rated: <strong><%= review.rating.truncate(100) %> / 5</strong>  - <%= review.description.truncate(100) %></p>
             </div>
             <div class="div card-footer border-0" style="background: #f5f5f5;">
-              <span class="float-right font-weight-bold lead">$<%= galaxy.rate %>/night</span>
-              <%= link_to "Delete Galaxy", galaxy_path(galaxy), class: "px-3 rounded-pill btn btn-danger btn-sm", method: :delete %>
+              <span class="float-right font-weight-bold lead">$<%= review.rating %>/night</span>
+              <%= link_to "boom boom review", galaxy_path(review), class: "px-3 rounded-pill btn btn-danger btn-sm" %>
             </div>
           </div>
         </div>
