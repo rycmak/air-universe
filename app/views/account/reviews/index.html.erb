@@ -49,9 +49,9 @@
              <div class="card-body p-2 text-white">
               <div class="text-muted">
                 <%#= cl_image_tag review.owner.photo.key, class: "avatar avatar-sm" %>
-                <a href="#">
-                  <span class="ml-1 small font-weight-normal"><%#= review.owner.first_name %> <%= review.booking.galaxy.name %></span>
-                </a>
+                <!-- <a href="#"> -->
+                  <span class="ml-1 small font-weight-normal"><%#= review.owner.first_name %> <%= link_to review.booking.galaxy.name, galaxy_path(review.booking.galaxy) %></span>
+                <!-- </a> -->
                 <span class="float-right"><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i><i class="far fa-hand-spock"></i></span>
               </div>
             </div>
