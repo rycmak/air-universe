@@ -6,14 +6,28 @@
   <%#= f.submit "Book" %>
 <%# end %>
 
-<div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2> New Booking for <%= @galaxy.name %> </h2>
+<section class="">
+  <div class="container pt-5">
+    <div class="row justify-content-center align-item-center">
+      <div class="col-6">
+        <%= cl_image_tag @galaxy.photo.key, class: "card-img-top rounded-lg mb-3" %>
 
-    <%= simple_form_for [ @galaxy, @booking ] do |f| %>
-      <%= f.input :start_date, as: :string, required: false, input_html: { id: "range_start" } %>
-      <%= f.input :end_date, as: :string, required: false, input_html: { id: "range_end" }  %>
-      <%= f.button :submit, "Book", class: "btn btn-primary" %>
-    <% end %>
+        <h3><%= @galaxy.name %></h3>
+        <h6 class="text-warning"><i class="fas fa-hand-spock"></i><i class="fas fa-hand-spock"></i><i class="fas fa-hand-spock"></i><i class="fas fa-hand-spock"></i><i class="far fa-hand-spock"></i></h6>
+        <p class="small"><%= @galaxy.description.truncate(180) %> </p>
+        <hr/>
+        <%= simple_form_for [ @galaxy, @booking ] do |f| %>
+          <div class="row">
+            <div class="col-6">
+              <%= f.input :start_date, as: :string, required: false, input_html: { id: "range_start" } %>
+            </div>
+            <div class="col-6">
+              <%= f.input :end_date, as: :string, required: false, input_html: { id: "range_end" }  %>
+            </div>
+          </div>
+          <%= f.button :submit, "Let's Vacaaaaation!", class: "btn btn-primary btn-block" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
+</section>
