@@ -13,20 +13,12 @@ Booking.destroy_all
 Galaxy.destroy_all
 User.destroy_all
 
-# Grab JSON using NASA's APOD API
-# Example request: response = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&count=5"
-# Parse JSON to get keys
-# Relevant keys: date, explanation (= description), title, url (image)
-# Dates with good galaxy images:
-# 2020-05-10 (Porpoise), 2018-05-23, 2019-11-27/2013-07-28 (Hoags), 2018-12-23/2019-09-09 (Andromeda), 2019-01-01, 2019-04-27, 2019-12-01, 2019-12-31 (Triangulum), 2020-05-15, 2016-12-18 (Cartwheel), 2016-04-20 (Einstein Ring), 2016-04-26 (Spiral), 2016-02-21 (Cigar Galaxy with supergalactic wind), 2012-04-12 (collision), 1999-11-25 (x-ray red), 2006-07-04 (Centaurus), 2006-06-12 (edge), 2005-10-22 (Ring), 2004-06-01 (Starburst), 2000-12-04 (Circinus - colourful), 2000-07-24 (Whirlpool with twin)
-
-
 user_names = ["Lando Calrissian", "Leia Organa", "Han Solo", "Lyra Erso", "Boba Fett", "C3 PO", "R2 D2", "Kylo Ren", "Rune Haako", "Rose Tico", "Maz Kanata", "Saw Gerrera", "Asajj Ventress", "Obi-wan Kenobi", "Sheev Palpatine", "Nute Gunray"]
 
 # Use NASA's APOD API to retrieve images and info about galaxies
 # response = "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=#{date}"
-# Selected dates for API calls:
-dates = %w[2019-09-09 2019-12-31 2020-05-10 2019-11-27 2019-01-01 2016-12-18 2016-04-26 2000-07-24 2005-10-22 2004-06-01 2000-12-04 2020-02-19 2019-04-27 2020-05-15 2012-08-12 2006-07-04]
+# Selected dates (with nice galaxy images) to insert into API calls:
+# dates = %w[2019-09-09 2019-12-31 2020-05-10 2019-11-27 2019-01-01 2016-12-18 2016-04-26 2000-07-24 2005-10-22 2004-06-01 2000-12-04 2020-02-19 2019-04-27 2020-05-15 2012-08-12 2006-07-04]
 
 # Results:
 galaxy_names = ["Andromeda",
@@ -90,19 +82,32 @@ puts "Done creating users"
 
 puts "Creating galaxies..."
 galaxy_names.each_with_index do |galaxy, index|
-  galaxy = Galaxy.create!(name: galaxy_names[index], description: galaxy_descriptions[index], rate: rand(500) + 500, owner: User.all.sample)
+  galaxy = Galaxy.create!(name: galaxy_names[index], description: galaxy_descriptions[index], rate: rand(500) + 500, owner: User.all[index])
   galaxy.photo.attach(io: open("app/assets/images/galaxies/#{photo_paths[index]}"), filename: "galaxy_#{index + 1}.jpg", content_type: 'image/jpg')
 end
 puts "Done creating galaxies"
 
 puts "Creating bookings..."
-11.times do
-  booking = Booking.create(customer: User.all.sample, start_date: Time.now, end_date: (Time.now + rand(500_000)), galaxy: Galaxy.all.sample)
+bookings_customers = [User.find_by(first_name: "Leia"), User.find_by(first_name: "R2"), User.find_by(first_name: "Han"), User.find_by(first_name: "Boba"), User.find_by(first_name: "Obi-wan")]
+bookings_galaxies = ["Andromeda",
+"Triangulum",
+"Porpoise",
+"Hoag's Object: A Nearly Perfect Ring Galaxy",
+"Sombrero",
+"Cartwheel",
+"NGC 6872: A Stretched Spiral Galaxy",        
+"Whirlpool",
+"Ring Galaxy AM 0644-741",
+"Galaxy Wars: M81 and M82"]
+booking_index = 0
+10.times do
+  Booking.create(customer: bookings_customers[booking_index % 5], start_date: Time.now, end_date: (Time.now + rand(500_000) + 259_200), galaxy: Galaxy.find_by(name: bookings_galaxies[booking_index]))
+  booking_index += 1
 end
 puts "Done creating bookings"
 
 puts "Creating reviews..."
-50.times do
-  review = Review.create(booking: Booking.all.sample, rating: rand(1..5), description: Faker::Quote.yoda )
+Booking.all.each do |booking|
+  review = Review.create(booking: booking, rating: rand(1..5), description: Faker::Quote.yoda )
 end
 puts "Done creating reviews"

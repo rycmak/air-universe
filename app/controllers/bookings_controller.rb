@@ -10,7 +10,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @galaxy = Galaxy.find(params[:galaxy_id])
-    # @booking.total_price = @galaxy.rate
+    # @booking.total_price = @galaxy.rate * (@booking.end_date - @booking.start_date) / (60 * 60 * 24)
+    @booking.total_price = 177
+    raise
     @booking.customer = current_user
     @booking.galaxy = @galaxy
     if @booking.save!
