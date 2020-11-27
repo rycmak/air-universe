@@ -1,17 +1,33 @@
 <section class="">
   <div class="container">
     <div class="row justify-content-center pt-5">
-      <div class="col-8">
+      <div class="col-6">
         <div class="card shadow rounded-lg mt-3">
           <div class="card-header pt-3">
-            <h4 class="text-center font-weight-bold">Create a New Galaxy Listing</h4>
+            <h4 class="text-center font-weight-bold">List Your Galaxy</h4>
           </div>
           <div class="card-body p-5">
             <%= simple_form_for [ @owner, @galaxy ] do |f| %>
-              <%= f.input :name, class: "form-control" %>
-              <%= f.input :description, class: "form-control" %>
-              <%= f.input :rate, class: "form-control" %>
-              <%= f.input :photo, as: :file, class: "btn btn-dark" %>
+              <div class="row">
+                <div class="col-12">
+                  <%= f.input :name, class: "form-control" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <%= f.input :description, class: "form-control" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <%= f.input :rate, class: "form-control" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <%= f.input :photo, as: :file, class: "btn btn-dark" %>
+                </div>
+              </div>
               <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -23,7 +39,7 @@
               </div> -->
             </div>
             <div class="card-footer bg-white p-4">
-              <%= f.submit "Create Galaxy", class: "btn btn-dark btn-block" %>
+              <%= f.submit "Create Galaxy", class: "btn btn-dark rounded-pill btn-block" %>
             </div>
           <% end %>
         </div>
