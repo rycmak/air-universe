@@ -1,32 +1,28 @@
-<div class="container">
+<section class="container pt-5">
+  <div class="row">
+    <div class="div col-12">
+      <h1><%= @galaxy.name %></h1>
+      <%= cl_image_tag @galaxy.photo.key, alt: "Galaxy image", width: 200, class: "rounded"%>
 
-  <div class="container">
-    <h1><%= @galaxy.name %></h1>
-  </div>
+      <p><strong>Description: </strong><%= @galaxy.description %></p>
+      <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
+      <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
 
-  <div class="container my-3">
-    <%= cl_image_tag @galaxy.photo.key, alt: "Galaxy image", width: 200, class: "rounded"%>
-  </div>
 
-  <div class="container">
-    <p><strong>Description: </strong><%= @galaxy.description %></p>
-    <p><strong>Owner: </strong><%= @galaxy.owner.first_name %> <%= @galaxy.owner.last_name %></p>
-    <p><strong>Rate: </strong>$<%= @galaxy.rate %>/night</p>
- 
+      <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary"%>
 
-  <%= link_to "book this galaxy", new_galaxy_booking_path(@galaxy), class: "btn btn-primary"%> 
-  <p></p>
-     
-  <% @galaxy.bookings.each do |booking| %>
-    <p><strong>Reviews by <%= booking.customer.first_name %>: </strong>
-      <ul>
-        
-      <% booking.reviews.each do |review| %> 
-      <li> <strong><%= review.rating %> / 5 </strong>- <%= review.description %> </li>
+      <% @galaxy.bookings.each do |booking| %>
+        <p><strong>Reviews by <%= booking.customer.first_name %>: </strong>
+          <ul>
+
+          <% booking.reviews.each do |review| %>
+          <li> <strong><%= review.rating %> / 5 </strong>- <%= review.description %> </li>
+          <% end %>
+
+          </ul>
+        </p>
       <% end %>
 
-      </ul>
-    </p>
-  <% end %>
-     </div>
-</div>
+    </div>
+  </div>
+</section>
