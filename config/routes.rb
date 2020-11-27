@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :account do
+    get 'galaxies/index'
+  end
   root to: 'galaxies#index'
 
   resources :galaxies, only: [ :index, :show, :destroy, :update ] do
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
   # ACCOUNTS
   namespace :account do
     resources :offers, only: [ :index ]
+    resources :galaxies, only: [ :index ]
     resources :bookings, only: [ :index ] do
       resources :reviews, only: [ :new ]
     end

@@ -8,11 +8,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <% if user_signed_in? %>
-    <h2><%= "Welcome you are, #{current_user.first_name}!" %></h2>
-  <% end %>
-
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -23,11 +18,13 @@
           <%= image_tag("https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/bell-dot-notification-notify-ring-256.png", style:"height: 30px; opacity: .5;") %>
         </li>
         <li class="nav-item dropdown">
+          <span class="small mr-2 font-weight-bold"><%= current_user.first_name %> <%= current_user.last_name %></span>
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "User Profile", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "My Bookings", account_bookings_path, class: "dropdown-item" %>
             <%= link_to "My Offers", account_offers_path, class: "dropdown-item" %>
+            <%= link_to "My Galaxies", account_galaxies_path, class: "dropdown-item" %>
             <%= link_to "New Galaxy", new_user_galaxy_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
