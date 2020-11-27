@@ -27,7 +27,7 @@ galaxy_names = ["Andromeda",
 "Hoag's Object: A Nearly Perfect Ring Galaxy",
 "Sombrero",
 "Cartwheel",
-"NGC 6872: A Stretched Spiral Galaxy",        
+"Stretched Spiral Galaxy NGC 6872",        
 "Whirlpool",
 "Ring Galaxy AM 0644-741",        
 "Starburst Galaxy (with Supergalactic Wind)",
@@ -76,7 +76,8 @@ puts "Creating users..."
 user_names.each do |user|
   first_name = user.split[0]
   last_name = user.split[1]
-  User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password")  
+  user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@universe.com", password: "password")  
+  user.photo.attach(io: open("app/assets/images/avatars/#{first_name.downcase}_#{last_name.downcase}.jpg"), filename: "#{first_name.downcase}_#{last_name.downcase}.jpg", content_type: 'image/jpg')
 end
 puts "Done creating users"
 
@@ -107,7 +108,16 @@ end
 puts "Done creating bookings"
 
 puts "Creating reviews..."
-Booking.all.each do |booking|
-  review = Review.create(booking: booking, rating: rand(1..5), description: Faker::Quote.yoda )
+
+# Booking.all.each do |booking|
+#   review = Review.create(booking: booking, rating: rand(1..5), description: Faker::Quote.yoda )
+
+User.all.each_with_index do |user, i|
+  puts "user number #{i + 1} is writing reviews..."
+  user.bookings.each_with_index do |booking, x|
+    puts "sweating on review number #{x + 1}..."
+    review = Review.create(booking: booking, rating: rand(1..5), description: Faker::Quote.yoda )
+  end
+
 end
 puts "Done creating reviews"
