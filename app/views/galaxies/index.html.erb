@@ -9,7 +9,7 @@
             <div class="m-3" style="position: absolute; bottom: 0;">
               <h5 class="font-weight-bold card-title mt-3"><%= link_to galaxy.name, galaxy_path(galaxy), class: "text-white" %></h5>
             </div>
-            <%= cl_image_tag galaxy.photo.key, class: "card-img-top rounded-lg" %>
+            <%= cl_image_tag galaxy.photo.key, class: "galaxy-thumbnail" %>
           </div>
           <div class="card-body p-2 text-white">
             <div class="text-muted">
